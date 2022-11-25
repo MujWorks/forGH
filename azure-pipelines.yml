@@ -28,3 +28,16 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarSCN'
+    organization: 'muj-org'
+    scannerMode: 'MSBuild'
+    projectKey: 'AgileMuj'
+    projectName: 'AgileMuj'
+
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
